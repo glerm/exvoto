@@ -1,0 +1,20 @@
+#N canvas 1 83 1351 632 10;
+#X declare -lib moocow;
+#X obj 846 432 soundfiler;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array exvoto01 1.45536e+06 float 2;
+#X coords 0 1 1.45536e+06 -1 200 140 1;
+#X restore 937 164 graph;
+#X msg 867 388 read -resize ../samples/AM-encontrado.wav exvoto01;
+#X obj 980 515 dac~;
+#X obj 986 473 tabplay~ exvoto01;
+#X obj 986 451 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 844 467 10 0 0 0 - - -;
+#X msg 1020 436;
+#X obj 61 36 urna-e;
+#X connect 0 0 6 0;
+#X connect 2 0 0 0;
+#X connect 4 0 3 0;
+#X connect 4 0 3 1;
+#X connect 5 0 4 0;
