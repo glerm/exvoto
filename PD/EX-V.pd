@@ -11,8 +11,7 @@
 #X obj 986 451 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X floatatom 844 467 10 0 0 0 - - -;
-#X msg 1020 436;
-#X obj 61 36 urna-e;
+#X obj 61 34 urna-e;
 #X connect 0 0 6 0;
 #X connect 2 0 0 0;
 #X connect 4 0 3 0;

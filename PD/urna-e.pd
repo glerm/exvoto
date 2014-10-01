@@ -1,12 +1,12 @@
 #N canvas 1 83 1295 632 10;
 #X declare -lib moocow;
-#X obj 118 223 cnv 15 60 20 empty cursor01 _ 12 -20 1 70 -233017 -128992
+#X obj 118 223 cnv 15 60 20 empty cursor01 _ 12 -20 1 70 -233017 -233017
 0;
-#X obj 118 169 cnv 15 60 60 empty cent 2 13 30 1 70 -233017 -233017
+#X obj 118 169 cnv 15 60 60 empty cent 6 13 30 1 70 -233017 -33289
 0;
 #X obj 183 223 cnv 15 60 20 empty cursor02 _ 12 -20 1 70 -233017 -233017
 0;
-#X obj 183 169 cnv 15 60 60 empty dez 3 13 30 1 70 -233017 -33289 0
+#X obj 183 169 cnv 15 60 60 empty dez 6 13 30 1 70 -233017 -33289 0
 ;
 #X obj 345 56 import moocow;
 #N canvas 659 251 494 460 cent 0;
@@ -20,7 +20,7 @@
 #X obj 322 374 s cursor01;
 #X msg 307 312 color 10 10;
 #X msg 319 332 color 10 11;
-#X obj 308 208 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 308 208 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 312 265 counter 1;
 #X obj 334 288 sel 0 1;
@@ -85,7 +85,7 @@
 #X obj 1024 920 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 1012 807 == 0;
-#N canvas 642 255 494 460 dez 0;
+#N canvas 637 239 494 297 dez 0;
 #X obj 41 4 key;
 #X obj 43 90 bytes2any;
 #X floatatom 79 192 5 0 0 0 - - -;
@@ -119,6 +119,7 @@
 #X obj 255 11 inlet;
 #X obj 220 48 spigot;
 #X obj 61 31 spigot;
+#X obj 148 207 r limpa;
 #X connect 0 0 30 0;
 #X connect 1 0 19 0;
 #X connect 2 0 4 0;
@@ -156,6 +157,7 @@
 #X connect 29 0 14 0;
 #X connect 30 0 1 0;
 #X connect 30 0 14 0;
+#X connect 31 0 16 0;
 #X restore 973 918 pd dez;
 #X obj 915 1012 +;
 #X obj 914 1042 change;
@@ -163,16 +165,15 @@
 -1 -1;
 #X floatatom 977 1068 5 0 0 0 - - -;
 #X msg 867 1007 1;
-#X obj 349 498 image serpent-egg.gif;
+#X obj 349 498 image twins.gif;
 #X msg 1147 135 open serpent-egg.gif;
 #X msg 1152 177 open twins.gif;
-#X obj 103 103 cnv 15 500 60 empty confirma Numero+enter: 13 30 1 70
--262144 -33289 0;
+#X obj 103 103 cnv 15 500 60 empty confirma FIM. 13 30 1 70 -262144
+-33289 0;
 #X obj 1185 446 s confirma;
 #X obj 1129 74 t b b;
 #X obj 1200 102 t b b;
 #X msg 1193 296 label FIM.;
-#X msg 1223 382 label â;
 #X obj 1202 74 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 1128 48 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -182,6 +183,16 @@
 #X obj 884 1095 s ok;
 #X obj 1239 67 r ok;
 #X msg 1149 322 label Numero+enter:;
+#X obj 1074 77 s limpa;
+#X msg 849 377 read -resize ../samples/voto-final.wav tabfinal;
+#X msg 784 352 read -resize ../samples/voto-enter.wav tabenter;
+#X obj 1035 505 tabplay~ tabfinal;
+#X obj 934 483 soundfiler;
+#X obj 1026 582 dac~;
+#X obj 766 154 table tabfinal;
+#X obj 781 231 table tabenter;
+#X obj 1058 528 tabplay~ tabenter;
+#X obj 862 319 loadbang;
 #X connect 5 0 6 0;
 #X connect 5 0 8 0;
 #X connect 6 0 7 0;
@@ -199,20 +210,30 @@
 #X connect 15 0 18 0;
 #X connect 16 0 17 0;
 #X connect 17 0 19 0;
-#X connect 17 0 33 0;
+#X connect 17 0 32 0;
 #X connect 19 0 10 0;
 #X connect 21 0 20 0;
 #X connect 22 0 20 0;
 #X connect 25 0 21 0;
-#X connect 25 1 35 0;
+#X connect 25 1 34 0;
+#X connect 25 1 43 0;
 #X connect 26 0 22 0;
 #X connect 26 1 27 0;
+#X connect 26 1 38 0;
 #X connect 27 0 24 0;
-#X connect 28 0 24 0;
-#X connect 29 0 26 0;
-#X connect 30 0 25 0;
+#X connect 28 0 26 0;
+#X connect 29 0 25 0;
+#X connect 29 0 35 0;
+#X connect 30 0 29 0;
 #X connect 31 0 30 0;
-#X connect 32 0 31 0;
-#X connect 34 0 29 0;
-#X connect 35 0 24 0;
+#X connect 33 0 28 0;
+#X connect 34 0 24 0;
+#X connect 36 0 39 0;
+#X connect 37 0 39 0;
+#X connect 38 0 40 0;
+#X connect 38 0 40 1;
+#X connect 43 0 40 0;
+#X connect 43 0 40 1;
+#X connect 44 0 37 0;
+#X connect 44 0 36 0;
 #X coords 0 -1 1 1 510 600 1 100 100;
